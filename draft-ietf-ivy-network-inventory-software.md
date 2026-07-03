@@ -155,6 +155,14 @@ The base network inventory model supports the software versions of
 The tree diagram in {{full-tree}} provides an overview of the data model for "ietf-network-inventory-sw-ext"
       module.
 
+The model applies software extension attributes at two levels:
+   *  NE-level "software-rev": Describes the main system software
+      revision of the network element, such as the network
+      operating system release of the whole device.
+   *  Component-level "software-rev": Describes the independent software
+      or firmware revision of an individual component, such as a line
+      card software, a line card firmware, or a pluggable software module.
+
 ~~~~~~~~~~
 {::include-fold ./ietf-network-inventory-sw-ext.tree}
 ~~~~~~~~~~
@@ -209,17 +217,48 @@ The "ietf-network-inventory-sw-ext" module uses types defined in {{!RFC9911}},
 ~~~~
 {: sourcecode-markers="true" sourcecode-name="ietf-network-inventory-sw-ext@2025-10-20.yang"}
 
+# Operational Considerations
+
+   This section complements the operational considerations of the
+   base network inventory model {{!I-D.ietf-ivy-network-inventory-yang}}.
+   The considerations of {{!I-D.ietf-ivy-network-inventory-yang}}
+   also apply to this extension: the read-only perspective of
+   inventory data, data discovery by the server from underlying
+   elements, aggregation at hierarchical controller interfaces,
+   and brownfield migration scenarios.
+
+   This model provides read-only reporting of software status and
+   associated timestamps.  It reflects the state of software
+   revisions and patches as discovered by the server; it does not
+   track software configuration intent or repository state.
+
+   The software inventory data is discovered by the server from
+   underlying managed entities using implementation-specific
+   mechanisms.  The installation-time and activation-time
+   timestamps, as well as the software status (installed or
+   activated), are reported as discovered from the managed entity.
+
+   Software lifecycle management operations (install,
+   activate, remove, etc.) are out of scope and SHOULD be defined
+   in separate YANG modules.
 
 # Security Considerations
 
-This section uses the template described in {{Section 3.7 of ?I-D.ietf-netmod-rfc8407bis}}.
+This section is modeled after the template described in {{Section 3.7
+of ?RFC9907}}.
+
+The "ietf-network-inventory-sw-ext" YANG module augments the base
+   network inventory model defined in {{!I-D.ietf-ivy-network-inventory-yang}}.
+   All security considerations specified in the base model apply to this
+   extension module. This section complements the base model with
+   additional security considerations specific to software inventory
+   extensions.
 
 The "ietf-network-inventory-sw-ext" YANG module defines a data model that is
 designed to be accessed via YANG-based management protocols, such as
-NETCONF NETCONF {{?RFC6241}} or RESTCONF {{?RFC8040}}. These YANG-based management
-protocols (1) have to use a secure transport layer
-(e.g., SSH {{?RFC4252}}, TLS {{?RFC8446}}, and QUIC {{?RFC9000}}) and (2) have
-to use mutual authentication.
+NETCONF {{?RFC6241}} and RESTCONF {{?RFC8040}}. These YANG-based management
+protocols (1) have to use a secure transport layer (e.g., SSH {{?RFC4252}}, TLS {{?RFC8446}},
+and QUIC {{?RFC9000}}) and (2) have to use mutual authentication.
 
 The Network Configuration Access Control Model (NACM) {{!RFC8341}}
 provides the means to restrict access for particular NETCONF or
@@ -229,18 +268,19 @@ RESTCONF protocol operations and content.
 Some of the readable data nodes in this YANG module may be considered
 sensitive or vulnerable in some network environments.  It is thus
 important to control read access (e.g., via get, get-config, or
-notification) to these data nodes. Specifically, the following
-subtrees and data nodes have particular sensitivities/
-vulnerabilities:
+notification) to these data nodes.
 
-* "/nwi:network-elements/network-element/software-rev"
+Specifically, the following subtrees and data nodes have particular sensitivities/vulnerabilities:
 
-  This subtree reports the software information for all the network
-  elements and their hardware components deployed within the network
-  as well as of the software modules being active on these network
-  elements and components. This may reveal software versions or
-  unpatched vulnerabilities.
-
+- "/nwi:network-elements/network-element/software-rev"
+- "/nwi:network-elements/network-element/software-rev/patch"
+- "/nwi:network-elements/network-element/components/component/software-rev"
+- "/nwi:network-elements/network-element/component/component/software-rev/patch"
+> These extension add status, installation time, and activation time
+  to both NE-level and component-level software revisions and patches.
+  Disclosure of detailed software versions, patch levels, and
+  lifecycle timestamps can reveal unpatched vulnerabilities and
+  operational maintenance windows, enabling targeted attacks.
 
 # IANA Considerations
 

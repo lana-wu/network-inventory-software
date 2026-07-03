@@ -44,13 +44,7 @@ module ietf-network-inventory-sw-ext {
      (https://trustee.ietf.org/license-info).
 
      This version of this YANG module is part of RFC XXXX; see
-     the RFC itself for full legal notices.
-
-     The key words 'MUST', 'MUST NOT', 'REQUIRED', 'SHALL', 'SHALL
-     NOT', 'SHOULD', 'SHOULD NOT', 'RECOMMENDED', 'NOT RECOMMENDED',
-     'MAY', and 'OPTIONAL' in this document are to be interpreted as
-     described in BCP 14 (RFC 2119) (RFC 8174) when, and only when,
-     they appear in all capitals, as shown here.";
+     the RFC itself for full legal notices.";
 
   revision 2026-04-15 {
     description
@@ -74,7 +68,7 @@ module ietf-network-inventory-sw-ext {
     base ne-nonphysical;
     description
       "Software NE that runs directly on a host OS
-       (a.k.a. bare-metal deployment) or hypervisor.
+       (e.g., bare-metal deployment) or hypervisor.
        Examples of software NEs are network controllers.";
   }
 
@@ -123,7 +117,7 @@ module ietf-network-inventory-sw-ext {
     base software-component;
     description
       "Installable unit smaller than a full OS image,
-       e.g. feature package.";
+       e.g., feature package.";
   }
 
   identity software-status {
@@ -134,13 +128,15 @@ module ietf-network-inventory-sw-ext {
   identity software-installed {
     base software-status;
     description
-      "Software status is Installed.";
+      "Software is present on the device but not currently active.
+        The software may require activation (e.g., reboot) to 
+        become operational.";
   }
 
   identity software-activated {
     base software-status;
     description
-      "Software status is Activated.";
+      "Software is present and currently active (operational).";
   }
 
   grouping software-info-grouping {

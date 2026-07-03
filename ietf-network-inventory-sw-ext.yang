@@ -68,7 +68,7 @@ module ietf-network-inventory-sw-ext {
     base ne-nonphysical;
     description
       "Software NE that runs directly on a host OS
-       (e.g., bare-metal deployment) or hypervisor.
+       (also known as bare-metal deployment) or hypervisor.
        Examples of software NEs are network controllers.";
   }
 
@@ -102,8 +102,8 @@ module ietf-network-inventory-sw-ext {
   identity bios {
     base software-component;
     description
-      "BIOS or UEFI firmware image responsible for hardware
-       initialisation and secure boot.";
+      "System firmware responsible for hardware initialization
+     and system boot.";
   }
 
   identity boot-loader {
@@ -128,15 +128,15 @@ module ietf-network-inventory-sw-ext {
   identity software-installed {
     base software-status;
     description
-      "Software is present on the device but not currently active.
-        The software may require activation (e.g., reboot) to 
-        become operational.";
+      "Software or patch is installed on the network element
+          or component but not yet active.";
   }
 
   identity software-activated {
     base software-status;
     description
-      "Software is present and currently active (operational).";
+      "Software or patch is active and taking effect
+          on the network element or component.";
   }
 
   grouping software-info-grouping {

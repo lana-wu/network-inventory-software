@@ -106,28 +106,21 @@ redefined here:
 *  augment
 *  data model
 *  data node
-   The following terms are defined in {{!RFC6241}} and are not redefined
+  The following terms are defined in {{!RFC6241}} and are not redefined
    here:
 *  configuration data
 *  state data
    The tree diagram used in this document follows the notation defined
-   in {{?RFC8340}}..
+   in {{?RFC8340}}.
 
  Also, this document uses terms defined in {{!I-D.ietf-ivy-network-inventory-yang}}.
-
-# Requirements Language
-
-  The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
-        "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and
-        "OPTIONAL" in this document are to be interpreted as described in BCP 14
-        {{?RFC2119}} {{?RFC8174}} when, and only when, they appear in all capitals, as shown here.
 
 # Relationship to Other YANG Data Models
 
 The base network inventory model supports the software versions of
       NEs and software versions of hardware components. This document adds
-      more software component identifiers (e.g. platformos, software patch)
-      and more NE types (e.g. software NE, virtual NE) to provide enhanced
+      more software component identifiers (e.g., platformos, software patch)
+      and more NE types (e.g., software NE, virtual NE) to provide enhanced
       software information on the NE to facilitate software compatibility
       check.
 
@@ -149,7 +142,7 @@ The base network inventory model supports the software versions of
 +----------^-----------+
 |                      |
 |  Software Extensions |
-|    e.g.,SW module    |
+|    e.g., SW module   |
 |                      |
 +----------------------+
 ~~~~
@@ -201,7 +194,7 @@ Similar to the common inventory attributes of NEs, the common
       line card (e.g., " foo-lc-fw-21.5.3").
 
 If more detailed installation and activation
-      information is needed—such as whether a component is active, pending-reboot,
+      information is needed, such as whether a component is active, pending-reboot,
  or rollback-eligible, along with its install time or activation
  time stamp, the extension attributes of software components
       can be used.
@@ -293,7 +286,7 @@ Scenario 2: Line-card programmable forwarding image
 # Acknowledgments
 {:numbered="false"}
 
-The authors would like to thank Prasenjit Manna,Phil Bedard, Diego R.
-      Lopez, Italo Busi, and many others for their helpful comments and
+The authors would like to thank Prasenjit Manna, Phil Bedard, Diego R.
+      Lopez, Italo Busi, Adrian Farrel, and many others for their helpful comments and
       suggestions.
 

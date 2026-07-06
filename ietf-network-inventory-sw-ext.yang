@@ -46,7 +46,7 @@ module ietf-network-inventory-sw-ext {
      This version of this YANG module is part of RFC XXXX; see
      the RFC itself for full legal notices.";
 
-  revision 2026-04-15 {
+  revision 2026-07-06 {
     description
       "Initial version";
     reference
@@ -103,7 +103,7 @@ module ietf-network-inventory-sw-ext {
     base software-component;
     description
       "System firmware responsible for hardware initialization
-     and system boot.";
+       and system boot.";
   }
 
   identity boot-loader {
@@ -199,4 +199,3 @@ module ietf-network-inventory-sw-ext {
     uses software-info-grouping;
   }
 }
-

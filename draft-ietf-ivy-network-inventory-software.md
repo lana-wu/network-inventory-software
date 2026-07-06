@@ -215,7 +215,7 @@ The "ietf-network-inventory-sw-ext" module uses types defined in {{!RFC9911}},
 ~~~~ yang
 {::include-fold ./ietf-network-inventory-sw-ext.yang}
 ~~~~
-{: sourcecode-markers="true" sourcecode-name="ietf-network-inventory-sw-ext@2025-10-20.yang"}
+{: sourcecode-markers="true" sourcecode-name="ietf-network-inventory-sw-ext@2026-07-06.yang"}
 
 # Operational Considerations
 
@@ -239,7 +239,7 @@ The "ietf-network-inventory-sw-ext" module uses types defined in {{!RFC9911}},
    activated), are reported as discovered from the managed entity.
 
    Software lifecycle management operations (install,
-   activate, remove, etc.) are out of scope and SHOULD be defined
+   activate, remove, etc.) are out of scope and could be defined
    in separate YANG modules.
 
 # Security Considerations
